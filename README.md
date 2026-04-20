@@ -36,10 +36,11 @@ Attribution and licenses: [assets/wikimedia/ATTRIBUTION.md](assets/wikimedia/ATT
 
 ## Interactive Simulator
 Starter simulator lives in [`network-lab-starter`](network-lab-starter):
-- animated topology canvas
-- packet movement animation
-- link failure toggle and reroute behavior
-- generated routing table snapshot
+- 3 topology presets (campus, ISP core, enterprise WAN)
+- manual and auto packet traffic generation
+- random link-failure injection and restore
+- Dijkstra step trace with route metrics and event log
+- live routing table snapshot for all nodes
 
 Run by opening: `network-lab-starter/index.html`
 
@@ -75,6 +76,11 @@ Dry run:
 Actual invites:
 ```powershell
 ./scripts/invite_students_from_csv.ps1 -CsvPath ./data/student_roster_template.csv -SendInvites
+```
+
+Retry mode with backoff + remainder export:
+```powershell
+./scripts/invite_students_from_csv.ps1 -CsvPath ./data/student_roster_template.csv -SendInvites -MaxRetries 3 -BaseDelaySeconds 20 -RemainingCsvPath ./data/invite_remaining.csv
 ```
 
 ## Important
