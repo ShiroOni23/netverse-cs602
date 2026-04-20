@@ -1,36 +1,83 @@
-# CS602 Network Lab (Individual)
+﻿# NetVerse CS602 - Interactive Network Lab
 
-Interactive, animation-rich Computer Networks lab for **138 individual students**.
+![Course](https://img.shields.io/badge/CS602-Computer%20Networks-0ea5e9?style=for-the-badge)
+![Mode](https://img.shields.io/badge/Mode-Individual%20Lab-22c55e?style=for-the-badge)
+![Students](https://img.shields.io/badge/Students-138-f59e0b?style=for-the-badge)
+![Branches](https://img.shields.io/badge/Student%20Branches-student--001..student--138-a855f7?style=for-the-badge)
+![Main Protected](https://img.shields.io/badge/main-protected-ef4444?style=for-the-badge)
+
+A visually rich, hands-on networking lab where students learn **routing decisions**, **path changes**, and **real internet route behavior** by building and experimenting.
+
+## Visual Learning (Wikimedia)
+
+### Dijkstra Routing Animation (GIF)
+![Dijkstra Animation](assets/wikimedia/dijkstra-animation.gif)
+
+### Traceroute Sample (PNG)
+![Traceroute Example](assets/wikimedia/traceroute.png)
+
+### Global Internet Penetration Map (SVG)
+![Internet Penetration Map](assets/wikimedia/internet-penetration-world-map.svg)
+
+Attribution and licenses: [assets/wikimedia/ATTRIBUTION.md](assets/wikimedia/ATTRIBUTION.md)
 
 ## Repo Model
-- Main branch: `main`
+- `main` branch: instructor-controlled and protected
 - Student branches: `student-001` to `student-138`
-- Work mode: **individual only** (one student per branch)
+- Branch workflow: individual primary, collaboration visible for learning
+- Read access: open for exploration and peer learning
 
-## Learning Goals
-- Understand packet forwarding and route selection
-- Visualize shortest-path routing (Dijkstra)
-- Explore routing table updates and path changes under failures
-- Build intuition through interactive network animations
+## What Students Learn
+- Packet forwarding and route selection
+- Shortest-path routing (Dijkstra)
+- Route recomputation after link failures
+- Traceroute interpretation hop-by-hop
+- Prefix and ASN-level internet routing context (BGP perspective)
 
-## Starter Project
-See [`network-lab-starter`](./network-lab-starter) for the browser-based routing simulator.
+## Interactive Simulator
+Starter simulator lives in [`network-lab-starter`](network-lab-starter):
+- animated topology canvas
+- packet movement animation
+- link failure toggle and reroute behavior
+- generated routing table snapshot
 
-## Instructor Workflow
-1. Push updates to `main`.
-2. Generate student branches once: `python scripts/create_student_branches.py`.
-3. (Later) Apply per-student push restrictions with mapping file:
-   `python scripts/apply_individual_branch_protection.py --mapping student_map.csv`
+Run by opening: `network-lab-starter/index.html`
 
-## Mapping File Format
-`student_map.csv`
+## Real-World Router Experience (PowerShell)
+Use these scripts on Windows PowerShell to gather live routing intelligence:
 
-```csv
-branch,github_username
-student-001,alice123
-student-002,bob456
+### 1. Hop-by-hop path + ISP/ASN enrichment
+```powershell
+./scripts/powershell/Get-NetworkPathIntel.ps1 -Target 8.8.8.8
 ```
 
-## Notes
-- This repo structure is for **CS602 current cohort**.
-- Future cohorts can use a different branch/team strategy.
+### 2. Prefix-level BGP intelligence (RIPEstat)
+```powershell
+./scripts/powershell/Get-BgpPrefixIntel.ps1 -Prefix 8.8.8.0/24
+```
+
+### 3. One-command full diagnostics flow
+```powershell
+./scripts/powershell/Invoke-NetLabDiagnostics.ps1 -Target 1.1.1.1 -Prefix 1.1.1.0/24
+```
+
+## Student Onboarding / Invitations
+Email pattern supported: `<ROLLNO>@rjit.ac.in`
+
+- Template roster: [`data/student_roster_template.csv`](data/student_roster_template.csv)
+- Bulk org invite script: [`scripts/invite_students_from_csv.ps1`](scripts/invite_students_from_csv.ps1)
+
+Dry run:
+```powershell
+./scripts/invite_students_from_csv.ps1 -CsvPath ./data/student_roster_template.csv
+```
+
+Actual invites:
+```powershell
+./scripts/invite_students_from_csv.ps1 -CsvPath ./data/student_roster_template.csv -SendInvites
+```
+
+## Important
+- Current branch numbering model is for this cohort.
+- Future cohorts can reuse this repo with a different mapping strategy.
+- Keep `main` protected to prevent accidental destructive changes.
