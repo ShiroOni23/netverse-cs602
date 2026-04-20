@@ -1,0 +1,13 @@
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

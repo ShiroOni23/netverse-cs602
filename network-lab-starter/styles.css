@@ -1,0 +1,104 @@
+:root {
+  --bg1: #041227;
+  --bg2: #0f2745;
+  --panel: rgba(9, 22, 40, 0.78);
+  --line: #4cc9f0;
+  --node: #80ffdb;
+  --text: #e6f4ff;
+  --accent: #ffd166;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 20% 20%, #143f75 0, #061428 45%, #020a14 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app-bg {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(transparent 95%, rgba(255,255,255,0.05) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.05) 95%);
+  background-size: 32px 32px;
+  animation: drift 16s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(32px); }
+}
+
+.layout {
+  width: min(1400px, 96vw);
+  margin: 20px auto;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+}
+
+.topbar {
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.topbar h1 { margin: 0 0 6px; font-size: 1.7rem; }
+.topbar p { margin: 0; color: #b8d6f5; }
+
+.controls-inline { display: flex; gap: 10px; align-items: end; flex-wrap: wrap; }
+label { font-size: 0.86rem; color: #cfe6ff; display: grid; gap: 6px; }
+select, button {
+  background: #112846;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+button { cursor: pointer; transition: transform .15s ease, background .2s ease; }
+button:hover { transform: translateY(-1px); background: #15345b; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 16px;
+}
+
+.stage { padding: 14px; }
+canvas {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #07203d, #031325);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.sidebar { padding: 16px; }
+.sidebar h2 { margin: 0 0 10px; font-size: 1.1rem; }
+.sidebar pre {
+  margin: 0 0 18px;
+  background: #07182d;
+  border-radius: 10px;
+  padding: 10px;
+  color: #d7ecff;
+  max-height: 230px;
+  overflow: auto;
+}
+.sidebar ul { margin: 0; padding-left: 18px; }
+.sidebar li { margin-bottom: 8px; color: #cfe6ff; }
+
+@media (max-width: 980px) {
+  .grid { grid-template-columns: 1fr; }
+}

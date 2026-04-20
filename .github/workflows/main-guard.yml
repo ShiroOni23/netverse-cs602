@@ -1,0 +1,18 @@
+name: Main Guard
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Block direct edits to main by students
+        shell: bash
+        run: |
+          BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+          if [[ "$BRANCH" == "main" ]]; then
+            echo "Direct student work on main is not allowed."
+          fi

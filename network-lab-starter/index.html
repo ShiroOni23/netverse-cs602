@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS602 NetLab - Routing Visualizer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-bg"></div>
+  <main class="layout">
+    <header class="topbar card">
+      <div>
+        <h1>CS602 Routing Studio</h1>
+        <p>Visualize packet routing with live animations and path recomputation.</p>
+      </div>
+      <div class="controls-inline">
+        <label>Source
+          <select id="source"></select>
+        </label>
+        <label>Destination
+          <select id="destination"></select>
+        </label>
+        <button id="sendPacket">Send Packet</button>
+        <button id="toggleLinkFailure">Toggle Link A-D</button>
+      </div>
+    </header>
+
+    <section class="grid">
+      <article class="card stage">
+        <canvas id="networkCanvas" width="920" height="520"></canvas>
+      </article>
+
+      <aside class="card sidebar">
+        <h2>Routing Table</h2>
+        <pre id="routingTable"></pre>
+        <h2>Lab Prompts</h2>
+        <ul>
+          <li>Observe how path changes when A-D fails.</li>
+          <li>Track total route cost before and after failure.</li>
+          <li>Explain next-hop decisions for each node.</li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
