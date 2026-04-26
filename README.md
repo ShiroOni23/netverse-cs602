@@ -8,15 +8,15 @@
 
 A visually rich, hands-on networking lab where students learn **routing decisions**, **path changes**, and **real internet route behavior** by building and experimenting.
 
-## Visual Learning (Wikimedia)
+## Visual Learning
 
-### Dijkstra Routing Animation (GIF)
+### Dijkstra Routing Animation 
 ![Dijkstra Animation](assets/wikimedia/dijkstra-animation.gif)
 
-### Traceroute Sample (PNG)
+### Traceroute Sample
 ![Traceroute Example](assets/wikimedia/traceroute.png)
 
-### Global Internet Penetration Map (SVG)
+### Global Internet Penetration Map 
 ![Internet Penetration Map](assets/wikimedia/internet-penetration-world-map.svg)
 
 Attribution and licenses: [assets/wikimedia/ATTRIBUTION.md](assets/wikimedia/ATTRIBUTION.md)
